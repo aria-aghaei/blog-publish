@@ -9,10 +9,16 @@ const posts = [];
 
 const post = async (file) => {
     const data = fs.readFileSync(file, 'utf-8'); 
-    const converted = converter.makeHtml(data);
+    const stat = fs.statSync(file, 'utf-8'); 
+    const mdname = file.split("/")[3];
+    const name = mdname.replace('md', 'html');
+    const filename = mdname.split(".")[0];
+    const filedate = new Date(stat.mtimeMs).toISOString().split('T')[0];
+    const fileURL = encodeURIComponent(`../posts/${name}`);
+    const md = `##[${filename}](${fileURL})\n*${filedate}*\n\n` + data;
+    const converted = converter.makeHtml(md);
     const out = template.replace("<!-- !INDEX_TEMPLATE -->", converted);
-    const name = file.split("/")[3].replace('md', 'html');
-    fs.writeFileSync(`./www/posts/${name}`, out);
+    fs.writeFileSync(`./www/html/posts/${name}`, out);
     posts.push(converted);
     console.log(name);
 }
@@ -24,11 +30,9 @@ for(const file of files){
     calls.push(post(`./input/posts/${file}`));
 }
 
-Promise.all(calls);
-
 const convertedForIndex = posts.join("<center>- - -</center>");
 const outForIndex = template.replace("<!-- !INDEX_TEMPLATE -->", convertedForIndex);
-fs.writeFileSync(`./www/index.html`, outForIndex);
+fs.writeFileSync(`./www/html/index.html`, outForIndex);
 
 const imageThumbnail = require('image-thumbnail');
 const images = fs.readdirSync("./input/images");
@@ -36,17 +40,14 @@ const images = fs.readdirSync("./input/images");
 const thumb = async (image) => {
     const out = await imageThumbnail(image);
     const name = image.split("/")[3];
-    fs.writeFileSync(`./www/thumbs/${name}`, out);
+    fs.writeFileSync(`./www/html/thumbs/${name}`, out);
     console.log(name);
 }
 
-const calls2 = [];
-
 for(const image of images){
-    calls2.push(thumb(`./input/images/${image}`));
+    calls.push(thumb(`./input/images/${image}`));
 }
 
-fs.cpSync("./input/images/", "./www/images/", {recursive: true} )
+fs.cpSync("./input/images/", "./www/html/images/", {recursive: true} )
 
-Promise.all(calls2);
-
+Promise.all(calls);
