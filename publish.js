@@ -7,12 +7,18 @@ const template = fs.readFileSync("./input/templates/index.template.html", 'utf-8
 const files = fs.readdirSync("./input/posts");
 const posts = [];
 
+files.sort((a, b) => {
+    const file1 = fs.statSync(`./input/posts/${a}`);
+    const file2 = fs.statSync(`./input/posts/${b}`);
+    return file2.mtimeMs - file1.mtimeMs;
+});
+
 const post = async (file) => {
     const data = fs.readFileSync(file, 'utf-8'); 
     const stat = fs.statSync(file, 'utf-8'); 
     const mdname = file.split("/")[3];
     const name = mdname.replace('md', 'html');
-    const filename = mdname.split(".")[0];
+    const filename = mdname.split(".")[0].replaceAll("_", " ");
     const filedate = new Date(stat.mtimeMs).toISOString().split('T')[0];
     const fileURL = encodeURIComponent(`../posts/${name}`);
     const md = `##[${filename}](${fileURL})\n*${filedate}*\n\n` + data;
