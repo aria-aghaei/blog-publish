@@ -1,1 +1,1 @@
-![Canadian Mailboxes](../images/image.png)
+![Canadian Mailboxes](../images/Canadian_Mailboxes.png)

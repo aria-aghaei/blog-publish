@@ -4,6 +4,7 @@
   "description": "Scripts for rapid blog publishing",
   "main": "",
   "scripts": {
+    "blog:publish": "git pull && yarn install && node publish.js",
     "test": "npx http-server"
   },
   "files": [

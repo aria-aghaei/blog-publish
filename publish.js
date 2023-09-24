@@ -10,7 +10,7 @@ const posts = [];
 files.sort((a, b) => {
     const file1 = fs.statSync(`./input/posts/${a}`);
     const file2 = fs.statSync(`./input/posts/${b}`);
-    return file2.mtimeMs - file1.mtimeMs;
+    return file2.atimeMs - file1.atimeMs;
 });
 
 const post = async (file) => {
