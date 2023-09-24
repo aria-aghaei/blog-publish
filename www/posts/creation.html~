@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML5 Test Page</title>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link id="sakura-css" rel="stylesheet" href="/css/sakura-dark.css" />
+  </head>
+  <body>
+    <div id="top" class="page" role="document">
+      <header role="banner">
+        <h1>SDC Does Columns</h1>
+        <p>
+	...and other short-form content.
+        </p>
+      </header>
+      <hr>
+
+      <main role="main">
+        <section id="text">
+          <article id="text__paragraphs">
+            <header>
+              <h2>About</h2>
+            </header>
+            <div>
+	      <p>
+	      	One day I, an extremely wise and intelligent person, had a glorious idea and created this amazing website in like 30 minutes. It only took me half an hour to make this website because I have the power of theft. Did you know that taking open-source code is easy and you can basically do it whenever you want? 
+	      </p>
+	      <p>
+	      	To pull this off you will need:
+		<ul>
+			<li>
+				Basic command line skills
+			</li>
+			<li>
+				Bare minimum git skill	
+			</li>
+			<li>
+				HTML and CSS skill (maybe, or you can just wing it)
+			</li>
+			<li>
+				That's pretty much it
+			</li>
+		</ul>
+	      </p>
+	      <p>
+	      	The steps to making a good website are simple. First, git clone <a href="https://github.com/oxalorg/sakura">this repo</a> and then just take the example page and css file and edit it to your liking. Then, cd into the website directory and do this:</p>
+	      <pre>
+$ npm install http-server -g
+$ http-server</pre>
+	      <p>
+
+            </div>
+            <footer>
+              <p><a href="#top">[Top]</a></p>
+            </footer>
+          </article>
+        </section>
+      </main>
+
+      <footer role="contentinfo">
+        <p>
+	  Site made by me, SDC. 
+          CSS made by <a href="http://twitter.com/cbracco">@cbracco</a>. Code on
+          <a href="http://github.com/cbracco/html5-test-page">GitHub</a>.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

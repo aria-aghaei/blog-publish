@@ -1,0 +1,36 @@
+{
+  "name": "blog-scripts",
+  "version": "0.0.1",
+  "description": "Scripts for rapid blog publishing",
+  "main": "",
+  "scripts": {
+    "test": "npx http-server"
+  },
+  "files": [
+    "css",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PookaSDC/epic-blog.git"
+  },
+  "keywords": [
+    "css",
+    "theme",
+    "classless",
+    "web-design",
+    "minimal",
+    "default",
+    "reset"
+  ],
+  "author": "Aria Aghaei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PookaSDC/epic-blog/issues"
+  },
+  "homepage": "TODO",
+  "dependencies": {
+    "image-thumbnail": "^1.0.15",
+    "showdown": "^2.1.0"
+  }
+}
